@@ -1,4 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as path from 'path';
+import * as dotenv from 'dotenv';
 
 /**
  * Read environment variables from file.
@@ -8,9 +10,17 @@ import { defineConfig, devices } from '@playwright/test';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+dotenv.config();
+
+//Identify target environment, fall back to 'qa' if empty
+const environment = process.env.ENV || 'qa';
+
+//Dynamically require the correct JSON file based on the environment flag
+const envData = require(path.resolve(__dirname, `src/data/${environment}.data.json`));
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -23,13 +33,20 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html', { open: 'always' }], ['list']],
+  timeout: 40000, // Global test timeout (40 seconds)
+  expect: {
+    timeout: 7000, // Assertion timeout for expect() (7 seconds)
+  },
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    baseURL: envData.baseUrl,
     trace: 'retain-on-failure',
+    actionTimeout: 10000,  // Timeout for click(), fill(), hover() actions (10 seconds)
+    navigationTimeout: 20000, // Timeout for page.goto(), page.waitForURL() (20 seconds)
   },
 
   /* Configure projects for major browsers */
@@ -69,11 +86,6 @@ export default defineConfig({
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
   ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
 });
+export const testData = envData.catalog;
+export const userProfile = envData.userProfile; 

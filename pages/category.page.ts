@@ -3,8 +3,8 @@ import { Locator, Page, expect } from '@playwright/test';
 import { BasePage } from './base.page';
 
 export class CategoryPage extends BasePage {
-  readonly titleTitleBlock: Locator;
-  readonly productItems: Locator;
+  private readonly titleTitleBlock: Locator;
+  private readonly productItems: Locator;
 
   constructor(page: Page) {
     super(page);

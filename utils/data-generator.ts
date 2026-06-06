@@ -1,14 +1,13 @@
-import mockUserTemplate from '../testdata/mockUserTemplate.json';
-
 export class DataGenerator {
     static generateUniqueEmail(): string {
         const timestamp = Date.now();
         return `testuser_${timestamp}@example.com`;
     }
 
-    static getStaticMockUser(email: string) {
+    // Pass the environment-based userProfile directly into the method
+    static getStaticMockUser(email: string, template: any) {
         return {
-            ...mockUserTemplate,
+            ...template,
             email: email
         };
     }

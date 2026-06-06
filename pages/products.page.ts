@@ -3,10 +3,10 @@ import { Locator, Page, expect } from '@playwright/test';
 import { BasePage } from './base.page';
 
 export class ProductsPage extends BasePage {
-    readonly searchInput: Locator;
-    readonly searchButton: Locator;
-    readonly productItems: Locator;
-    readonly productNames: Locator;
+    private readonly searchInput: Locator;
+    private readonly searchButton: Locator;
+    private readonly productItems: Locator;
+    private readonly productNames: Locator;
 
     constructor(page: Page) {
         super(page);

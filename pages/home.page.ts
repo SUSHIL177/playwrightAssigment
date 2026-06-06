@@ -3,14 +3,14 @@ import { expect, Locator, Page } from '@playwright/test';
 import { BasePage } from './base.page';
 
 export class HomePage extends BasePage {
-    readonly logo: Locator;
-    readonly navBar: Locator;
-    readonly signupLoginLink: Locator;
-    readonly productsLink: Locator;
-    readonly loggedInAsText: Locator;
-    readonly categoryWomenLink: Locator;
-    readonly categoryDressLink: Locator;
-    readonly brandPoloLink: Locator;
+    private readonly logo: Locator;
+    private readonly navBar: Locator;
+    private readonly signupLoginLink: Locator;
+    private readonly productsLink: Locator;
+    private readonly loggedInAsText: Locator;
+    private readonly categoryWomenLink: Locator;
+    private readonly categoryDressLink: Locator;
+    private readonly brandPoloLink: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -48,7 +48,7 @@ export class HomePage extends BasePage {
     async selectWomenDressCategory(): Promise<void> {
 
         await this.page.waitForLoadState('domcontentloaded');
-        
+
         await this.click(this.categoryWomenLink);
 
         const isDressVisible = this.categoryDressLink.isVisible()

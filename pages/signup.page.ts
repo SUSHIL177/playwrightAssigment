@@ -3,18 +3,18 @@ import { Locator, Page } from '@playwright/test';
 import { BasePage } from './base.page';
 
 export class SignupPage extends BasePage {
-    readonly titleMrRadio: Locator;
-    readonly passwordInput: Locator;
-    readonly firstNameInput: Locator;
-    readonly lastNameInput: Locator;
-    readonly addressInput: Locator;
-    readonly countrySelect: Locator;
-    readonly stateInput: Locator;
-    readonly cityInput: Locator;
-    readonly zipcodeInput: Locator;
-    readonly mobileNumberInput: Locator;
-    readonly createAccountButton: Locator;
-    readonly accountCreatedHeading: Locator;
+    private readonly titleMrRadio: Locator;
+    private readonly passwordInput: Locator;
+    private readonly firstNameInput: Locator;
+    private readonly lastNameInput: Locator;
+    private readonly addressInput: Locator;
+    private readonly countrySelect: Locator;
+    private readonly stateInput: Locator;
+    private readonly cityInput: Locator;
+    private readonly zipcodeInput: Locator;
+    private readonly mobileNumberInput: Locator;
+    private readonly createAccountButton: Locator;
+    private readonly accountCreatedHeading: Locator;
 
     constructor(page: Page) {
         super(page);

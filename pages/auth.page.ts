@@ -3,9 +3,9 @@ import { Locator, Page } from '@playwright/test';
 import { BasePage } from './base.page';
 
 export class AuthPage extends BasePage {
-    readonly signupNameInput: Locator;
-    readonly signupEmailInput: Locator;
-    readonly signupButton: Locator;
+    private readonly signupNameInput: Locator;
+    private readonly signupEmailInput: Locator;
+    private readonly signupButton: Locator;
 
     constructor(page: Page) {
         super(page);
