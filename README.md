@@ -43,7 +43,7 @@ npx playwright test
 npx playwright test --project=chromium --headed
 
 # run a single spec file
-npx playwright test tests/e2e/automation-exercise.spec.ts
+npx playwright test tests/automation-exercise.spec.ts
 
 # run a single test by title
 npx playwright test -g "Execute fully-validated workflow"
@@ -73,7 +73,7 @@ If these artifacts are already committed and causing slow pushes, I can help rem
 ## Project structure (brief)
 
 - pages/: Page object classes used by tests (e.g. [pages/home.page.ts](pages/home.page.ts), [pages/products.page.ts](pages/products.page.ts)).
-- tests/: Playwright test specs (e.g. [tests/e2e/automation-exercise.spec.ts](tests/e2e/automation-exercise.spec.ts)).
+- tests/: Playwright test specs (e.g. [tests/automation-exercise.spec.ts](tests/automation-exercise.spec.ts)).
 - data/: test data and fixtures.
 - utils/: helper utilities (data generators, helpers).
 - playwright.config.ts: Playwright configuration (projects, timeouts, reporters).
