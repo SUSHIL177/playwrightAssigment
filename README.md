@@ -1,1 +1,101 @@
+# Playwright Assignment
+
+This repository contains Playwright end-to-end tests and a simple page-object test framework used for the Automation Exercise demo.
+
+**Quick links**
+- Project: [package.json](package.json)
+- Playwright config: [playwright.config.ts](playwright.config.ts)
+
+## Prerequisites
+- Node.js 18+ (or compatible LTS)
+- npm (or yarn)
+
+## Clone
+
+```bash
+git clone https://github.com/SUSHIL177/playwrightAssigment.git
+cd playwrightAssigment
+```
+
+## Install dependencies
+
+```bash
+npm install
+# Install Playwright browsers (required first time)
+npx playwright install
+```
+
+## Run the tests
+
+- Run full test suite (headless):
+
+```bash
+npx playwright test
+```
+
+- Run tests in headed Chromium (useful when debugging):
+
+```bash
+npx playwright test --project=chromium --headed
+```
+
+- Run a single spec file:
+
+```bash
+npx playwright test tests/e2e/automation-exercise.spec.ts
+```
+
+- Run a single test by title:
+
+```bash
+npx playwright test -g "Execute fully-validated workflow"
+```
+
+## Viewing failures and traces
+
+- When a test generates a trace or video, open it with:
+
+```bash
+npx playwright show-trace <path-to-trace.zip>
+```
+
+## Recommended .gitignore
+
+Don't commit large test artifacts. Add the following to `.gitignore`:
+
+```
+playwright-report/
+trace/
+test-results/
+node_modules/
+```
+
+If these artifacts are already committed and causing slow pushes, I can help remove them from the history or migrate to Git LFS.
+
+## Project structure (brief)
+
+- pages/: Page object classes used by tests (e.g. [pages/home.page.ts](pages/home.page.ts), [pages/products.page.ts](pages/products.page.ts)).
+- tests/: Playwright test specs (e.g. [tests/e2e/automation-exercise.spec.ts](tests/e2e/automation-exercise.spec.ts)).
+- data/: test data and fixtures.
+- utils/: helper utilities (data generators, helpers).
+- playwright.config.ts: Playwright configuration (projects, timeouts, reporters).
+- package.json: scripts and dependencies. Use `npm test` or `npx playwright test`.
+
+## Useful npm scripts
+
+If `package.json` includes scripts, run them via:
+
+```bash
+npm test
+# or, if defined:
+npm run test:debug
+```
+
+## Troubleshooting
+- If push is slow, check for large files in `playwright-report/`, `trace/`, or `test-results/` and remove them from the repo or use Git LFS.
+- If a test is flaky because of an ad overlay, see `pages/home.page.ts` which contains popup-dismissing logic.
+
+---
+
+If you want, I can: commit and push this README for you, add the recommended `.gitignore` entries, or remove previously-committed artifacts. Which would you like next?
 
