@@ -27,27 +27,25 @@ npx playwright install
 
 ## Run the tests
 
-- Run full test suite (headless):
+- Preferred (project npm script used in this repo):
 
 ```bash
+npm run test:qa:regression
+```
+
+- Direct Playwright alternatives:
+
+```bash
+# run full test suite (headless)
 npx playwright test
-```
 
-- Run tests in headed Chromium (useful when debugging):
-
-```bash
+# run tests in headed Chromium (useful when debugging)
 npx playwright test --project=chromium --headed
-```
 
-- Run a single spec file:
-
-```bash
+# run a single spec file
 npx playwright test tests/e2e/automation-exercise.spec.ts
-```
 
-- Run a single test by title:
-
-```bash
+# run a single test by title
 npx playwright test -g "Execute fully-validated workflow"
 ```
 
